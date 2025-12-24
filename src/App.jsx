@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-/* --- ÍCONES INLINE --- */
+/* --- ÍCONES INLINE (Funciona em qualquer lugar sem instalação) --- */
 const Icon = ({ children, size = 24, className = "", ...props }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}>{children}</svg>
 );
@@ -34,21 +34,36 @@ const TrendingUp = (props) => <Icon {...props}><polyline points="22 7 13.5 15.5 
 const CheckCircle = (props) => <Icon {...props}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></Icon>;
 const MoveRight = (props) => <Icon {...props}><path d="M18 8L22 12L18 16" /><path d="M2 12H22" /></Icon>;
 
-/* --- ESTILOS GLOBAIS --- */
+/* --- ESTILOS GLOBAIS BLINDADOS --- */
 const GlobalStyles = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
     
+    /* RESET BRUTAL para forçar largura total */
+    html, body, #root {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-height: 100vh !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: hidden !important;
+      display: block !important;
+    }
+
     body {
       font-family: 'Outfit', sans-serif;
       background-color: #f4f3e1;
       color: #423b2c;
-      overflow-x: hidden;
-      width: 100%;
     }
     
-    h1, h2, h3, h4, .font-heading {
-      font-family: 'Outfit', sans-serif;
+    /* Container Centralizado Personalizado */
+    .custom-container {
+      width: 100%;
+      max-width: 1280px; /* Largura segura para desktops */
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
 
     .hide-scrollbar::-webkit-scrollbar {
@@ -119,9 +134,37 @@ const translations = {
       subtitle: <>Problemas reais,<br/>soluções estratégicas<br/>e resultados mensuráveis.</>,
       readCase: 'Ler Case',
       items: [
-        { title: "Nadia: Assistente Financeira", category: "Fintech", image: "https://miro.medium.com/v2/resize:fit:4000/format:webp/1*NVSoWTwAUaekoEajLXIK0g.png", link: "https://medium.com/@giu.bortoletto/nadia-case-de-produto-d445589a4f69", challenge: "Simplificar a gestão financeira para usuários desbancarizados.", solution: "Chatbot humanizado que traduz dados em dicas.", result: "Engajamento diário recorde.", bigNumbers: ["+45% Engajamento", "-20% Suporte", "4.8 Rating"] },
-        { title: "App Academia PM Fit", category: "HealthTech", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "https://medium.com/@giu.bortoletto/app-academia-pm-fit-case-de-produto-9749eef5cc8b", challenge: "Reduzir churn de alunos nos primeiros 30 dias.", solution: "Gamificação e planos de treino adaptativos.", result: "Increased retention and LTV.", bigNumbers: ["+30% Retenção", "+15% LTV", "90 NPS"] },
-        { title: "Próximo Desafio", category: "Em Breve", isPlaceholder: true, image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "#", challenge: "Espaço reservado para o futuro.", solution: "Inovação contínua.", result: "Resultados extraordinários.", bigNumbers: ["∞", "Impact", "Futuro"] }
+        { 
+          title: "Nadia: Assistente Financeira", 
+          category: "Fintech", 
+          image: "https://miro.medium.com/v2/resize:fit:4000/format:webp/1*NVSoWTwAUaekoEajLXIK0g.png", 
+          link: "https://medium.com/@giu.bortoletto/nadia-case-de-produto-d445589a4f69", 
+          challenge: "Simplificar a gestão financeira para usuários desbancarizados.", 
+          solution: "Chatbot humanizado que traduz dados em dicas.", 
+          result: "Engajamento diário recorde.", 
+          bigNumbers: ["+45% Engajamento", "-20% Suporte", "4.8 Rating"] 
+        },
+        { 
+          title: "App Academia PM Fit", 
+          category: "HealthTech", 
+          image: "https://miro.medium.com/v2/resize:fit:4000/format:webp/1*KkUsJWfBI2AIz-z2jygZuA.png", 
+          link: "https://medium.com/@giu.bortoletto/app-academia-pm-fit-case-de-produto-9749eef5cc8b", 
+          challenge: "Reduzir churn de alunos nos primeiros 30 dias.", 
+          solution: "Gamificação e planos de treino adaptativos.", 
+          result: "Increased retention and LTV.", 
+          bigNumbers: ["+30% Retenção", "+15% LTV", "90 NPS"] 
+        },
+        { 
+          title: "Próximo Desafio", 
+          category: "Em Breve", 
+          isPlaceholder: true, 
+          image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+          link: "#", 
+          challenge: "Espaço reservado para o futuro.", 
+          solution: "Inovação contínua.", 
+          result: "Resultados extraordinários.", 
+          bigNumbers: ["∞", "Impact", "Futuro"] 
+        }
       ]
     },
     skills: {
@@ -187,7 +230,7 @@ const translations = {
       items: [
         { title: "Nadia: Financial Assistant", category: "Fintech", image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "https://medium.com/@giu.bortoletto/nadia-case-de-produto-d445589a4f69", challenge: "Simplifying finance for unbanked users.", solution: "Humanized chatbot translating data.", result: "Record daily engagement.", bigNumbers: ["+45% Engagement", "-20% Support", "4.8 Rating"] },
         { title: "App Academia PM Fit", category: "HealthTech", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "https://medium.com/@giu.bortoletto/app-academia-pm-fit-case-de-produto-9749eef5cc8b", challenge: "Reducing churn in first 30 days.", solution: "Gamification and adaptive plans.", result: "Increased retention and LTV.", bigNumbers: ["+30% Retention", "+15% LTV", "90 NPS"] },
-        { title: "Next Challenge", category: "Coming Soon", isPlaceholder: true, image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "#", challenge: "Space reserved for the future.", solution: "Continuous innovation.", result: "Extraordinary results.", bigNumbers: ["∞", "Impact", "Futuro"] }
+        { title: "Next Challenge", category: "Coming Soon", isPlaceholder: true, image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "#", challenge: "Space reserved for the future.", solution: "Continuous innovation.", result: "Extraordinary results.", bigNumbers: ["∞", "Impact", "Future"] }
       ]
     },
     skills: {
@@ -237,18 +280,15 @@ const AIChatAssistant = ({ contextData, lang }) => {
     setInput('');
     setIsLoading(true);
     try {
-      // Cria um contexto seguro sem elementos React (JSX) para evitar erros no JSON.stringify
       const safeContext = {
         nav: contextData.nav,
         intro: {
           ...contextData.intro,
-          // Substitui JSX por strings simples
           aboutP1: lang === 'pt' ? "Sou IA Product Manager experiente em produtos digitais e inteligência artificial." : "I am an AI Product Manager experienced in digital products and artificial intelligence.",
         },
         experience: contextData.experience,
         cases: {
           ...contextData.cases,
-          // Removemos o subtitle complexo (JSX) e mandamos string simples
           subtitle: lang === 'pt' ? "Problemas reais, soluções estratégicas e resultados mensuráveis." : "Real problems, strategic solutions, measurable results.",
         },
         skills: contextData.skills,
@@ -310,7 +350,7 @@ const Navigation = ({ lang, toggleLang, t }) => {
   return (
     <>
       <nav className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${scrolled ? 'py-4' : 'py-8'}`}>
-        <div className="w-full max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div className="custom-container flex justify-between items-center">
           <a href="#" className={`glass-panel px-5 py-2 rounded-full text-2xl font-bold tracking-tighter text-[#423b2c] transition-all hover:bg-white/50 ${scrolled ? 'opacity-0 md:opacity-100' : 'opacity-100'}`}>
             Giuliette<span className="text-[#ba4744]">.</span>
           </a>
@@ -349,8 +389,8 @@ const Navigation = ({ lang, toggleLang, t }) => {
 
 const IntroSection = ({ t }) => {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden glass-bg-base">
-      <div className="w-full max-w-7xl mx-auto px-6 relative z-10">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden glass-bg-base w-full">
+      <div className="custom-container relative z-10">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
           
           <div className="order-1 md:order-1 animate-in fade-in slide-in-from-bottom-8 duration-1000">
@@ -430,8 +470,8 @@ const Experience = ({ t }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <section id="experience" className="py-24 bg-[#f4f3e1]">
-      <div className="w-full max-w-7xl mx-auto px-6">
+    <section id="experience" className="py-24 bg-[#f4f3e1] w-full">
+      <div className="custom-container">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-[#423b2c] mb-4">{t.title}</h2>
@@ -494,8 +534,8 @@ const Skills = ({ t }) => {
   const softSkillColors = ["#f0cb56", "#3b5f5c", "#ba4744"];
 
   return (
-    <section id="skills" className="py-24 bg-white rounded-[3rem] shadow-sm relative z-10">
-      <div className="w-full max-w-7xl mx-auto px-6">
+    <section id="skills" className="py-24 bg-white rounded-[3rem] shadow-sm relative z-10 w-full">
+      <div className="custom-container">
         
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#423b2c]">{t.hardTitle}</h2>
@@ -558,8 +598,8 @@ const Skills = ({ t }) => {
 
 const Cases = ({ t }) => {
   return (
-    <section id="cases" className="py-32 bg-[#f4f3e1]">
-      <div className="w-full max-w-7xl mx-auto px-6">
+    <section id="cases" className="py-32 bg-[#f4f3e1] w-full">
+      <div className="custom-container">
         <div className="text-center max-w-4xl mx-auto mb-24">
           <span className="text-[#3b5f5c] text-sm font-bold uppercase tracking-widest mb-4 block">{t.title}</span>
           <h2 className="text-4xl md:text-6xl font-bold text-[#423b2c] mb-6 leading-tight">
@@ -617,8 +657,8 @@ const Cases = ({ t }) => {
 
 const Articles = ({ t }) => {
   return (
-    <section id="articles" className="py-32 bg-[#423b2c] text-[#f4f3e1]">
-      <div className="w-full max-w-7xl mx-auto px-6">
+    <section id="articles" className="py-32 bg-[#423b2c] text-[#f4f3e1] w-full">
+      <div className="custom-container">
         <div className="flex items-center justify-between mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-[#f4f3e1]">{t.title}</h2>
           <a href="#" className="hidden md:flex items-center gap-2 text-[#3b5f5c] font-bold border-b-2 border-[#3b5f5c] pb-1 hover:text-[#f0cb56] hover:border-[#f0cb56] transition-colors">
@@ -652,8 +692,8 @@ const Articles = ({ t }) => {
 
 const Footer = ({ t }) => {
   return (
-    <footer id="contato" className="bg-[#f4f3e1] text-[#423b2c] py-24 relative overflow-hidden border-t border-[#423b2c]/10">
-      <div className="w-full max-w-7xl mx-auto px-6 text-center relative z-10">
+    <footer id="contato" className="bg-[#f4f3e1] text-[#423b2c] py-24 relative overflow-hidden border-t border-[#423b2c]/10 w-full">
+      <div className="custom-container text-center relative z-10">
         <h2 className="text-6xl md:text-8xl font-bold mb-12 tracking-tight opacity-90">{t.title}</h2>
         <p className="text-xl md:text-2xl text-[#423b2c]/60 mb-16 max-w-2xl mx-auto font-light">{t.text}</p>
         
@@ -687,10 +727,10 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f3e1] text-[#423b2c] font-sans selection:bg-[#ba4744] selection:text-[#f4f3e1]">
+    <div className="min-h-screen bg-[#f4f3e1] text-[#423b2c] font-sans selection:bg-[#ba4744] selection:text-[#f4f3e1] w-full">
       <GlobalStyles />
       <Navigation lang={lang} toggleLang={toggleLang} t={t} />
-      <main>
+      <main className="w-full">
         <IntroSection t={t} />
         <Experience t={t.experience} />
         <Skills t={t.skills} />
