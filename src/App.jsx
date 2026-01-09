@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-/* --- ÍCONES INLINE (Funciona em qualquer lugar sem instalação) --- */
+/* --- ÍCONES INLINE (DEFINIÇÃO MANUAL PARA EVITAR ERROS DE IMPORTAÇÃO) --- */
+/* Removemos o import de 'lucide-react' para não conflitar com estas definições */
+
 const Icon = ({ children, size = 24, className = "", ...props }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}>{children}</svg>
 );
@@ -9,6 +11,7 @@ const X = (props) => <Icon {...props}><path d="M18 6 6 18"/><path d="m6 6 12 12"
 const Linkedin = (props) => <Icon {...props}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></Icon>;
 const Mail = (props) => <Icon {...props}><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></Icon>;
 const ArrowRight = (props) => <Icon {...props}><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></Icon>;
+const ArrowLeft = (props) => <Icon {...props}><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></Icon>;
 const ExternalLink = (props) => <Icon {...props}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></Icon>;
 const BookOpen = (props) => <Icon {...props}><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></Icon>;
 const Briefcase = (props) => <Icon {...props}><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></Icon>;
@@ -33,13 +36,15 @@ const Users = (props) => <Icon {...props}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4
 const TrendingUp = (props) => <Icon {...props}><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></Icon>;
 const CheckCircle = (props) => <Icon {...props}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></Icon>;
 const MoveRight = (props) => <Icon {...props}><path d="M18 8L22 12L18 16" /><path d="M2 12H22" /></Icon>;
+const Brain = (props) => <Icon {...props}><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></Icon>;
+const BarChart = (props) => <Icon {...props}><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></Icon>;
+const Workflow = (props) => <Icon {...props}><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></Icon>;
 
 /* --- ESTILOS GLOBAIS BLINDADOS --- */
 const GlobalStyles = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
     
-    /* RESET BRUTAL para forçar largura total */
     html, body, #root {
       width: 100% !important;
       max-width: 100% !important;
@@ -56,10 +61,14 @@ const GlobalStyles = () => (
       color: #423b2c;
     }
     
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+
     /* Container Centralizado Personalizado */
     .custom-container {
       width: 100%;
-      max-width: 1280px; /* Largura segura para desktops */
+      max-width: 1280px; 
       margin-left: auto;
       margin-right: auto;
       padding-left: 1.5rem;
@@ -114,7 +123,7 @@ const translations = {
       ctaContact: 'Vamos conversar?',
       statExp: 'Experiência',
       statEng: 'Inglês',
-      profileImage: "https://i.imgur.com/sQGxunz.jpeg"
+      profileImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
     },
     experience: {
       title: 'Minha Jornada',
@@ -137,7 +146,7 @@ const translations = {
         { 
           title: "Nadia: Assistente Financeira", 
           category: "Fintech", 
-          image: "https://miro.medium.com/v2/resize:fit:4000/format:webp/1*NVSoWTwAUaekoEajLXIK0g.png", 
+          image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
           link: "https://medium.com/@giu.bortoletto/nadia-case-de-produto-d445589a4f69", 
           challenge: "Simplificar a gestão financeira para usuários desbancarizados.", 
           solution: "Chatbot humanizado que traduz dados em dicas.", 
@@ -147,7 +156,7 @@ const translations = {
         { 
           title: "App Academia PM Fit", 
           category: "HealthTech", 
-          image: "https://miro.medium.com/v2/resize:fit:4000/format:webp/1*KkUsJWfBI2AIz-z2jygZuA.png", 
+          image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
           link: "https://medium.com/@giu.bortoletto/app-academia-pm-fit-case-de-produto-9749eef5cc8b", 
           challenge: "Reduzir churn de alunos nos primeiros 30 dias.", 
           solution: "Gamificação e planos de treino adaptativos.", 
@@ -155,15 +164,16 @@ const translations = {
           bigNumbers: ["+30% Retenção", "+15% LTV", "90 NPS"] 
         },
         { 
-          title: "Próximo Desafio", 
-          category: "Em Breve", 
-          isPlaceholder: true, 
-          image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
-          link: "#", 
-          challenge: "Espaço reservado para o futuro.", 
-          solution: "Inovação contínua.", 
-          result: "Resultados extraordinários.", 
-          bigNumbers: ["∞", "Impact", "Futuro"] 
+          // Este é o case interno simulado
+          title: "Athena AI: Otimização de Atendimento", 
+          category: "AI & CS", 
+          isInternal: true, // Flag para indicar navegação interna
+          internalRoute: 'case-athena',
+          image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+          challenge: "Escalar o atendimento ao cliente sem aumentar custos operacionais.", 
+          solution: "Implementação de LLMs para triagem e resolução automática.", 
+          result: "Redução drástica no TMA e aumento do CSAT.", 
+          bigNumbers: ["60% Deflexão", "+20 NPS", "-30% Custos"] 
         }
       ]
     },
@@ -230,7 +240,17 @@ const translations = {
       items: [
         { title: "Nadia: Financial Assistant", category: "Fintech", image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "https://medium.com/@giu.bortoletto/nadia-case-de-produto-d445589a4f69", challenge: "Simplifying finance for unbanked users.", solution: "Humanized chatbot translating data.", result: "Record daily engagement.", bigNumbers: ["+45% Engagement", "-20% Support", "4.8 Rating"] },
         { title: "App Academia PM Fit", category: "HealthTech", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "https://medium.com/@giu.bortoletto/app-academia-pm-fit-case-de-produto-9749eef5cc8b", challenge: "Reducing churn in first 30 days.", solution: "Gamification and adaptive plans.", result: "Increased retention and LTV.", bigNumbers: ["+30% Retention", "+15% LTV", "90 NPS"] },
-        { title: "Next Challenge", category: "Coming Soon", isPlaceholder: true, image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "#", challenge: "Space reserved for the future.", solution: "Continuous innovation.", result: "Extraordinary results.", bigNumbers: ["∞", "Impact", "Future"] }
+        { 
+          title: "Athena AI: Support Optimization", 
+          category: "AI & CS", 
+          isInternal: true, 
+          internalRoute: 'case-athena',
+          image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+          challenge: "Scaling customer support without increasing operational costs.", 
+          solution: "LLM implementation for triage and automated resolution.", 
+          result: "Drastic reduction in AHT and increased CSAT.", 
+          bigNumbers: ["60% Deflection", "+20 NPS", "-30% Costs"] 
+        }
       ]
     },
     skills: {
@@ -264,6 +284,170 @@ const translations = {
   }
 };
 
+/* --- CASE STUDY PAGE COMPONENT --- */
+const CaseStudyPage = ({ onBack }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#f4f3e1] text-[#423b2c] animate-in slide-in-from-right-10 fade-in duration-500">
+      
+      {/* Header com Navegação */}
+      <nav className="fixed top-0 left-0 w-full z-50 py-6 px-6 glass-panel-dark border-b border-[#3b5f5c]/10">
+        <div className="custom-container flex justify-between items-center">
+          <button 
+            onClick={onBack}
+            className="flex items-center gap-2 text-[#3b5f5c] hover:text-[#ba4744] font-bold transition-colors group"
+          >
+            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+              <ArrowLeft size={20} />
+            </div>
+            <span className="hidden md:inline">Voltar para Home</span>
+          </button>
+          
+          <div className="text-sm font-bold uppercase tracking-widest text-[#423b2c]/50">Case Study: Athena</div>
+        </div>
+      </nav>
+
+      {/* Hero do Case */}
+      <header className="pt-40 pb-20 px-6 relative overflow-hidden">
+        <div className="custom-container relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#3b5f5c] text-white text-xs font-bold tracking-widest uppercase mb-8 shadow-lg">
+            <Sparkles size={14} /> AI & Customer Success
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-[#423b2c] mb-8 leading-tight">
+            Athena AI: Otimização de Atendimento
+          </h1>
+          
+          <div className="flex flex-wrap gap-4 mb-12">
+            {['LLM', 'Python', 'RAG', 'Zendesk API'].map(tag => (
+              <span key={tag} className="px-4 py-2 bg-white rounded-lg text-sm font-bold text-[#423b2c]/70 border border-[#423b2c]/10">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="aspect-video w-full rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
+            <img 
+              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
+              className="w-full h-full object-cover" 
+              alt="Athena AI Dashboard" 
+            />
+          </div>
+        </div>
+      </header>
+
+      {/* Conteúdo Principal */}
+      <main className="pb-32 px-6">
+        <div className="custom-container max-w-5xl mx-auto space-y-24">
+          
+          {/* Seção 1: Contexto e Desafio */}
+          <div className="grid md:grid-cols-2 gap-16">
+            <div>
+              <h2 className="text-3xl font-bold mb-6 text-[#ba4744] flex items-center gap-3">
+                <Target size={28} /> O Desafio
+              </h2>
+              <p className="text-lg text-[#423b2c]/80 leading-relaxed">
+                A empresa enfrentava um crescimento exponencial de usuários, o que sobrecarregou o time de suporte. 
+                O Tempo Médio de Atendimento (TMA) subiu para 48 horas e o NPS caiu 15 pontos. 
+                Precisávamos escalar o atendimento sem triplicar o quadro de funcionários.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-[#423b2c]/5">
+              <h3 className="font-bold text-[#423b2c] mb-4">Métricas Iniciais</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                  <span className="text-gray-500">TMA</span>
+                  <span className="font-bold text-red-500">48h (Alto)</span>
+                </div>
+                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                  <span className="text-gray-500">Backlog</span>
+                  <span className="font-bold text-red-500">2.5k tickets</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-500">NPS</span>
+                  <span className="font-bold text-yellow-500">45 (Neutro)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Seção 2: A Solução */}
+          <div className="glass-panel p-10 md:p-16 rounded-[3rem] bg-white/40">
+            <h2 className="text-4xl font-bold mb-12 text-[#3b5f5c] text-center flex items-center justify-center gap-3">
+              <Brain size={32} /> A Solução: Athena
+            </h2>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-[#f0cb56]">
+                  <Database size={32} />
+                </div>
+                <h4 className="font-bold text-xl mb-3">Base de Conhecimento</h4>
+                <p className="text-sm text-[#423b2c]/70">Centralização de FAQs, manuais e histórico de tickets em um Vector Database.</p>
+              </div>
+              
+              <div className="text-center">
+                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-[#3b5f5c]">
+                  <Cpu size={32} />
+                </div>
+                <h4 className="font-bold text-xl mb-3">Motor RAG</h4>
+                <p className="text-sm text-[#423b2c]/70">Recuperação de contexto relevante + GPT-4 para gerar respostas precisas e empáticas.</p>
+              </div>
+              
+              <div className="text-center">
+                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-[#ba4744]">
+                  <Workflow size={32} />
+                </div>
+                <h4 className="font-bold text-xl mb-3">Human-in-the-loop</h4>
+                <p className="text-sm text-[#423b2c]/70">Casos complexos ou de sentimento negativo são roteados imediatamente para humanos.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Seção 3: Resultados */}
+          <div>
+            <h2 className="text-3xl font-bold mb-10 text-[#423b2c] flex items-center gap-3">
+              <TrendingUp size={28} /> Impacto Gerado
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { label: 'Deflexão Automática', value: '60%', color: 'text-[#3b5f5c]' },
+                { label: 'Aumento NPS', value: '+20 pts', color: 'text-[#f0cb56]' },
+                { label: 'Redução de Custos', value: '-30%', color: 'text-[#ba4744]' },
+                { label: 'Tempo de Resposta', value: '< 2min', color: 'text-[#423b2c]' },
+              ].map((stat, i) => (
+                <div key={i} className="bg-white p-6 rounded-2xl shadow-sm text-center border border-[#423b2c]/5 hover:scale-105 transition-transform">
+                  <p className={`text-4xl md:text-5xl font-bold mb-2 ${stat.color}`}>{stat.value}</p>
+                  <p className="text-xs uppercase tracking-widest font-bold text-gray-400">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Call to Action Final */}
+          <div className="text-center pt-10">
+            <p className="text-xl text-[#423b2c]/70 mb-6 max-w-2xl mx-auto">
+              Este projeto demonstrou como a IA generativa pode sair do hype e gerar valor tangível para o negócio e para o cliente.
+            </p>
+            <button 
+              onClick={onBack}
+              className="bg-[#3b5f5c] text-white px-10 py-4 rounded-full font-bold hover:bg-[#2a4543] transition-colors shadow-xl"
+            >
+              Voltar para o Portfólio
+            </button>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  );
+};
+
+
+/* --- CHATBOT IA COMPONENT --- */
 const AIChatAssistant = ({ contextData, lang }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([{ role: 'assistant', text: lang === 'pt' ? 'Olá! Sou o Digital Twin da Giuliette. Pergunte-me sobre sua carreira!' : 'Hi! I am Giuliette\'s Digital Twin. Ask me about her career!' }]);
@@ -337,6 +521,8 @@ const AIChatAssistant = ({ contextData, lang }) => {
     </>
   );
 };
+
+/* --- COMPONENTES PRINCIPAIS --- */
 
 const Navigation = ({ lang, toggleLang, t }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -596,7 +782,7 @@ const Skills = ({ t }) => {
   );
 };
 
-const Cases = ({ t }) => {
+const Cases = ({ t, onViewCase }) => {
   return (
     <section id="cases" className="py-32 bg-[#f4f3e1] w-full">
       <div className="custom-container">
@@ -642,9 +828,18 @@ const Cases = ({ t }) => {
                 </div>
 
                 {!item.isPlaceholder && (
-                  <a href={item.link} target="_blank" className="absolute bottom-6 right-6 w-12 h-12 bg-[#f0cb56] rounded-full flex items-center justify-center text-[#423b2c] shadow-lg translate-y-20 group-hover:translate-y-0 transition-transform duration-300">
-                    <ArrowRight size={20} />
-                  </a>
+                  item.isInternal ? (
+                    <button 
+                      onClick={() => onViewCase(item.internalRoute)}
+                      className="absolute bottom-6 right-6 w-12 h-12 bg-[#f0cb56] rounded-full flex items-center justify-center text-[#423b2c] shadow-lg translate-y-20 group-hover:translate-y-0 transition-transform duration-300 z-30 cursor-pointer"
+                    >
+                      <ArrowRight size={20} />
+                    </button>
+                  ) : (
+                    <a href={item.link} target="_blank" className="absolute bottom-6 right-6 w-12 h-12 bg-[#f0cb56] rounded-full flex items-center justify-center text-[#423b2c] shadow-lg translate-y-20 group-hover:translate-y-0 transition-transform duration-300">
+                      <ArrowRight size={20} />
+                    </a>
+                  )
                 )}
               </div>
             </div>
@@ -720,11 +915,26 @@ const Footer = ({ t }) => {
 
 const App = () => {
   const [lang, setLang] = useState('pt');
+  const [currentView, setCurrentView] = useState('landing');
   const t = translations[lang];
 
   const toggleLang = () => {
     setLang(prev => prev === 'pt' ? 'en' : 'pt');
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentView]);
+
+  if (currentView === 'case-athena') {
+    return (
+      <div className="min-h-screen bg-[#f4f3e1] text-[#423b2c] font-sans selection:bg-[#ba4744] selection:text-[#f4f3e1] w-full">
+        <GlobalStyles />
+        <CaseStudyPage onBack={() => setCurrentView('landing')} />
+        <Footer t={t.footer} />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#f4f3e1] text-[#423b2c] font-sans selection:bg-[#ba4744] selection:text-[#f4f3e1] w-full">
@@ -734,7 +944,7 @@ const App = () => {
         <IntroSection t={t} />
         <Experience t={t.experience} />
         <Skills t={t.skills} />
-        <Cases t={t.cases} />
+        <Cases t={t.cases} onViewCase={setCurrentView} />
         <Articles t={t.articles} />
       </main>
       <Footer t={t.footer} />
