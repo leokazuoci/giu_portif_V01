@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 /* --- ÍCONES INLINE (DEFINIÇÃO MANUAL PARA EVITAR ERROS DE IMPORTAÇÃO) --- */
-/* Removemos o import de 'lucide-react' para não conflitar com estas definições */
-
 const Icon = ({ children, size = 24, className = "", ...props }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}>{children}</svg>
 );
@@ -39,6 +37,9 @@ const MoveRight = (props) => <Icon {...props}><path d="M18 8L22 12L18 16" /><pat
 const Brain = (props) => <Icon {...props}><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></Icon>;
 const BarChart = (props) => <Icon {...props}><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></Icon>;
 const Workflow = (props) => <Icon {...props}><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></Icon>;
+const Search = (props) => <Icon {...props}><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></Icon>;
+const Rocket = (props) => <Icon {...props}><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></Icon>;
+
 
 /* --- ESTILOS GLOBAIS BLINDADOS --- */
 const GlobalStyles = () => (
@@ -146,7 +147,7 @@ const translations = {
         { 
           title: "Nadia: Assistente Financeira", 
           category: "Fintech", 
-          image: "https://miro.medium.com/v2/resize:fit:4000/format:webp/1*NVSoWTwAUaekoEajLXIK0g.png", 
+          image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
           link: "https://medium.com/@giu.bortoletto/nadia-case-de-produto-d445589a4f69", 
           challenge: "Simplificar a gestão financeira para usuários desbancarizados.", 
           solution: "Chatbot humanizado que traduz dados em dicas.", 
@@ -156,7 +157,7 @@ const translations = {
         { 
           title: "App Academia PM Fit", 
           category: "HealthTech", 
-          image: "https://miro.medium.com/v2/resize:fit:4000/format:webp/1*KkUsJWfBI2AIz-z2jygZuA.png", 
+          image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
           link: "https://medium.com/@giu.bortoletto/app-academia-pm-fit-case-de-produto-9749eef5cc8b", 
           challenge: "Reduzir churn de alunos nos primeiros 30 dias.", 
           solution: "Gamificação e planos de treino adaptativos.", 
@@ -164,16 +165,16 @@ const translations = {
           bigNumbers: ["+30% Retenção", "+15% LTV", "90 NPS"] 
         },
         { 
-          // Este é o case interno simulado
-          title: "Athena AI: Otimização de Atendimento", 
-          category: "AI & CS", 
+          // Case do PDF
+          title: "Onboarding Orientado por Dados", 
+          category: "Fintech & UX", 
           isInternal: true, // Flag para indicar navegação interna
-          internalRoute: 'case-athena',
-          image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
-          challenge: "Escalar o atendimento ao cliente sem aumentar custos operacionais.", 
-          solution: "Implementação de LLMs para triagem e resolução automática.", 
-          result: "Redução drástica no TMA e aumento do CSAT.", 
-          bigNumbers: ["60% Deflexão", "+20 NPS", "-30% Custos"] 
+          internalRoute: 'case-onboarding',
+          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+          challenge: "Alto volume de recontatos e baixa conversão na abertura de conta digital.", 
+          solution: "Padronização de decisões, automação via BOT e dashboards de eficiência.", 
+          result: "Redução drástica em custos operacionais e fricção.", 
+          bigNumbers: ["-57% Ligações", "+20% FCR", "-33% Recontato"] 
         }
       ]
     },
@@ -241,15 +242,16 @@ const translations = {
         { title: "Nadia: Financial Assistant", category: "Fintech", image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "https://medium.com/@giu.bortoletto/nadia-case-de-produto-d445589a4f69", challenge: "Simplifying finance for unbanked users.", solution: "Humanized chatbot translating data.", result: "Record daily engagement.", bigNumbers: ["+45% Engagement", "-20% Support", "4.8 Rating"] },
         { title: "App Academia PM Fit", category: "HealthTech", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "https://medium.com/@giu.bortoletto/app-academia-pm-fit-case-de-produto-9749eef5cc8b", challenge: "Reducing churn in first 30 days.", solution: "Gamification and adaptive plans.", result: "Increased retention and LTV.", bigNumbers: ["+30% Retention", "+15% LTV", "90 NPS"] },
         { 
-          title: "Athena AI: Support Optimization", 
-          category: "AI & CS", 
+          // Conteúdo do PDF traduzido
+          title: "Data-Driven Onboarding", 
+          category: "Fintech & UX", 
           isInternal: true, 
-          internalRoute: 'case-athena',
-          image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
-          challenge: "Scaling customer support without increasing operational costs.", 
-          solution: "LLM implementation for triage and automated resolution.", 
-          result: "Drastic reduction in AHT and increased CSAT.", 
-          bigNumbers: ["60% Deflection", "+20 NPS", "-30% Costs"] 
+          internalRoute: 'case-onboarding',
+          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+          challenge: "High volume of follow-ups and low conversion in digital account opening.", 
+          solution: "Standardization of decisions, BOT automation, and efficiency dashboards.", 
+          result: "Drastic reduction in operational costs and friction.", 
+          bigNumbers: ["-57% Active Calls", "+20% FCR", "-33% Follow-up"] 
         }
       ]
     },
@@ -284,7 +286,7 @@ const translations = {
   }
 };
 
-/* --- CASE STUDY PAGE COMPONENT --- */
+/* --- CASE STUDY PAGE COMPONENT (CONTEÚDO DO PDF) --- */
 const CaseStudyPage = ({ onBack }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -306,7 +308,7 @@ const CaseStudyPage = ({ onBack }) => {
             <span className="hidden md:inline">Voltar para Home</span>
           </button>
           
-          <div className="text-sm font-bold uppercase tracking-widest text-[#423b2c]/50">Case Study: Athena</div>
+          <div className="text-sm font-bold uppercase tracking-widest text-[#423b2c]/50">Case Study: Onboarding</div>
         </div>
       </nav>
 
@@ -314,15 +316,15 @@ const CaseStudyPage = ({ onBack }) => {
       <header className="pt-40 pb-20 px-6 relative overflow-hidden">
         <div className="custom-container relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#3b5f5c] text-white text-xs font-bold tracking-widest uppercase mb-8 shadow-lg">
-            <Sparkles size={14} /> AI & Customer Success
+            <Sparkles size={14} /> Fintech & Eficiência
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-[#423b2c] mb-8 leading-tight">
-            Athena AI: Otimização de Atendimento
+            Onboarding Orientado por Dados
           </h1>
           
           <div className="flex flex-wrap gap-4 mb-12">
-            {['LLM', 'Python', 'RAG', 'Zendesk API'].map(tag => (
+            {['Análise de Dados', 'Automação', 'Jornada do Usuário', 'Fintech'].map(tag => (
               <span key={tag} className="px-4 py-2 bg-white rounded-lg text-sm font-bold text-[#423b2c]/70 border border-[#423b2c]/10">
                 {tag}
               </span>
@@ -331,9 +333,9 @@ const CaseStudyPage = ({ onBack }) => {
 
           <div className="aspect-video w-full rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
             <img 
-              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
               className="w-full h-full object-cover" 
-              alt="Athena AI Dashboard" 
+              alt="Dashboard de Métricas Financeiras" 
             />
           </div>
         </div>
@@ -343,81 +345,108 @@ const CaseStudyPage = ({ onBack }) => {
       <main className="pb-32 px-6">
         <div className="custom-container max-w-5xl mx-auto space-y-24">
           
-          {/* Seção 1: Contexto e Desafio */}
+          {/* Seção 1: Contexto e Problema */}
           <div className="grid md:grid-cols-2 gap-16">
             <div>
               <h2 className="text-3xl font-bold mb-6 text-[#ba4744] flex items-center gap-3">
-                <Target size={28} /> O Desafio
+                <Target size={28} /> O Contexto & Problema
               </h2>
-              <p className="text-lg text-[#423b2c]/80 leading-relaxed">
-                A empresa enfrentava um crescimento exponencial de usuários, o que sobrecarregou o time de suporte. 
-                O Tempo Médio de Atendimento (TMA) subiu para 48 horas e o NPS caiu 15 pontos. 
-                Precisávamos escalar o atendimento sem triplicar o quadro de funcionários.
-              </p>
+              <div className="space-y-4 text-lg text-[#423b2c]/80 leading-relaxed">
+                <p>
+                  <strong>Contexto:</strong> Em 2022, atuei como Product Manager em uma Fintech, liderando um projeto crítico de revisão da jornada de criação de conta. Meu foco estava em melhorar métricas de experiência e aquisição, além de otimizar o fluxo de validação de documentos.
+                </p>
+                <p>
+                  A autonomia foi alta, permitindo uma abordagem orientada a dados, olhando para a jornada ponta a ponta e colaborando estreitamente com a operação.
+                </p>
+                <p>
+                  <strong>O Problema Central:</strong> Identificamos um alto volume de contatos e recontatos durante a abertura de conta. As causas raízes eram fluxos pouco claros, decisões manuais e baixa rastreabilidade dos dados.
+                </p>
+                <p className="border-l-4 border-[#ba4744] pl-4 italic text-[#423b2c]">
+                  "Isso gerava baixa conversão, ineficiência operacional e risco financeiro em uma etapa crítica do produto."
+                </p>
+              </div>
             </div>
-            <div className="bg-white p-8 rounded-3xl shadow-sm border border-[#423b2c]/5">
-              <h3 className="font-bold text-[#423b2c] mb-4">Métricas Iniciais</h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                  <span className="text-gray-500">TMA</span>
-                  <span className="font-bold text-red-500">48h (Alto)</span>
+            
+            <div className="space-y-8">
+              {/* Card KPIs */}
+              <div className="bg-white p-8 rounded-3xl shadow-sm border border-[#423b2c]/5">
+                <h3 className="font-bold text-[#423b2c] mb-4 flex items-center gap-2">
+                  <TrendingUp size={20} className="text-[#3b5f5c]"/> Objetivos & KPIs
+                </h3>
+                <p className="text-sm text-[#423b2c]/60 mb-6">
+                  Reduzir atrito sem comprometer segurança.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                    <span className="text-gray-500">Conversão</span>
+                    <span className="font-bold text-[#3b5f5c]">Aumentar no Onboarding</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                    <span className="text-gray-500">Qualidade</span>
+                    <span className="font-bold text-[#f0cb56]">Melhorar FCR (Resolução 1º contato)</span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-gray-100 pb-2">
+                    <span className="text-gray-500">Eficiência</span>
+                    <span className="font-bold text-[#ba4744]">Reduzir Recontato</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-500">Volume</span>
+                    <span className="font-bold text-[#423b2c]">Reduzir Incoming</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center border-b border-gray-100 pb-2">
-                  <span className="text-gray-500">Backlog</span>
-                  <span className="font-bold text-red-500">2.5k tickets</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-500">NPS</span>
-                  <span className="font-bold text-yellow-500">45 (Neutro)</span>
-                </div>
+              </div>
+
+              {/* Card Hipótese */}
+              <div className="glass-panel p-8 rounded-3xl border border-[#ba4744]/20 bg-[#ba4744]/5">
+                <h3 className="font-bold text-[#ba4744] mb-2 flex items-center gap-2">
+                  <Lightbulb size={20}/> Hipótese Central
+                </h3>
+                <p className="text-[#423b2c]/80 italic">
+                  "O atrito não estava só na interface, mas em processos e decisões invisíveis ao cliente ao longo da jornada."
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Seção 2: A Solução */}
+          {/* Seção 2: Descoberta e Soluções */}
           <div className="glass-panel p-10 md:p-16 rounded-[3rem] bg-white/40">
             <h2 className="text-4xl font-bold mb-12 text-[#3b5f5c] text-center flex items-center justify-center gap-3">
-              <Brain size={32} /> A Solução: Athena
+              <Search size={32} /> Discovery & Soluções
             </h2>
             
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-[#f0cb56]">
-                  <Database size={32} />
+            <p className="text-center text-lg text-[#423b2c]/70 mb-10 max-w-3xl mx-auto">
+              Conduzi um discovery focado em entender o sistema como um todo. As atividades incluíram: análise do funil completo, leitura de métricas de atendimento, escuta da operação e mapeamento da jornada "as-is" vs "to-be".
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { title: 'Padronização', icon: CheckCircle, desc: 'Decisões e critérios de análise padronizados.', color: 'text-[#f0cb56]' },
+                { title: 'Automação (BOT)', icon: Cpu, desc: 'Coleta e cobrança automática de documentos.', color: 'text-[#3b5f5c]' },
+                { title: 'Visibilidade', icon: MessageSquare, desc: 'Revisão de mensagens para dar clareza ao cliente.', color: 'text-[#ba4744]' },
+                { title: 'Monitoramento', icon: BarChart, desc: 'Dashboards para monitorar eficiência e dados.', color: 'text-[#423b2c]' },
+              ].map((item, i) => (
+                <div key={i} className="bg-white/60 p-6 rounded-2xl border border-white shadow-sm text-center">
+                  <div className={`w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm ${item.color}`}>
+                    <item.icon size={24} />
+                  </div>
+                  <h4 className="font-bold text-lg mb-2">{item.title}</h4>
+                  <p className="text-xs text-[#423b2c]/70">{item.desc}</p>
                 </div>
-                <h4 className="font-bold text-xl mb-3">Base de Conhecimento</h4>
-                <p className="text-sm text-[#423b2c]/70">Centralização de FAQs, manuais e histórico de tickets em um Vector Database.</p>
-              </div>
-              
-              <div className="text-center">
-                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-[#3b5f5c]">
-                  <Cpu size={32} />
-                </div>
-                <h4 className="font-bold text-xl mb-3">Motor RAG</h4>
-                <p className="text-sm text-[#423b2c]/70">Recuperação de contexto relevante + GPT-4 para gerar respostas precisas e empáticas.</p>
-              </div>
-              
-              <div className="text-center">
-                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-[#ba4744]">
-                  <Workflow size={32} />
-                </div>
-                <h4 className="font-bold text-xl mb-3">Human-in-the-loop</h4>
-                <p className="text-sm text-[#423b2c]/70">Casos complexos ou de sentimento negativo são roteados imediatamente para humanos.</p>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Seção 3: Resultados */}
+          {/* Seção 3: Impacto e Resultados */}
           <div>
             <h2 className="text-3xl font-bold mb-10 text-[#423b2c] flex items-center gap-3">
-              <TrendingUp size={28} /> Impacto Gerado
+              <TrendingUp size={28} /> Impacto em 10 Semanas
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { label: 'Deflexão Automática', value: '60%', color: 'text-[#3b5f5c]' },
-                { label: 'Aumento NPS', value: '+20 pts', color: 'text-[#f0cb56]' },
-                { label: 'Redução de Custos', value: '-30%', color: 'text-[#ba4744]' },
-                { label: 'Tempo de Resposta', value: '< 2min', color: 'text-[#423b2c]' },
+                { label: 'FCR (Resolução)', value: '+20%', color: 'text-[#3b5f5c]' },
+                { label: 'Recontato', value: '-33%', color: 'text-[#ba4744]' },
+                { label: 'Ligações Ativas', value: '-57%', color: 'text-[#ba4744]' },
+                { label: 'Incoming Total', value: '-50%', color: 'text-[#423b2c]' },
               ].map((stat, i) => (
                 <div key={i} className="bg-white p-6 rounded-2xl shadow-sm text-center border border-[#423b2c]/5 hover:scale-105 transition-transform">
                   <p className={`text-4xl md:text-5xl font-bold mb-2 ${stat.color}`}>{stat.value}</p>
@@ -425,19 +454,58 @@ const CaseStudyPage = ({ onBack }) => {
                 </div>
               ))}
             </div>
+            <p className="text-center text-[#423b2c]/70 mt-8 max-w-2xl mx-auto italic">
+              "O projeto reduziu custo operacional, aumentou conversão e deixou a jornada preparada para evolução com IA, baseada em dados estruturados e decisões rastreáveis."
+            </p>
+          </div>
+
+          {/* Visão de Futuro */}
+          <div className="bg-[#423b2c] text-[#f4f3e1] p-10 md:p-16 rounded-[3rem] text-center relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold mb-8 flex items-center justify-center gap-3">
+                <Rocket size={32} className="text-[#f0cb56]" /> Visão de Futuro
+              </h3>
+              <div className="grid md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
+                <div className="flex gap-4">
+                  <div className="w-2 h-2 mt-2 bg-[#f0cb56] rounded-full shrink-0"></div>
+                  <p className="opacity-90">Evoluir o onboarding para um modelo mais <strong>preditivo e automatizado</strong>.</p>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-2 h-2 mt-2 bg-[#3b5f5c] rounded-full shrink-0"></div>
+                  <p className="opacity-90">Aplicar <strong>IA em decisões de baixo risco</strong>, reduzindo drasticamente a validação manual.</p>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-2 h-2 mt-2 bg-[#ba4744] rounded-full shrink-0"></div>
+                  <p className="opacity-90">Direcionar atendimento humano apenas para <strong>exceções e casos complexos</strong>.</p>
+                </div>
+                <div className="flex gap-4">
+                   <div className="w-2 h-2 mt-2 bg-white rounded-full shrink-0"></div>
+                   <p className="opacity-90">Escalar conversão e eficiência com <strong>dados estruturados e rastreáveis</strong>.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Call to Action Final */}
-          <div className="text-center pt-10">
-            <p className="text-xl text-[#423b2c]/70 mb-6 max-w-2xl mx-auto">
-              Este projeto demonstrou como a IA generativa pode sair do hype e gerar valor tangível para o negócio e para o cliente.
+          <div className="text-center pt-6 pb-12">
+            <p className="text-lg text-[#423b2c]/60 mb-6">
+              Quer levar este conteúdo em formato de palestra para a sua empresa?
             </p>
-            <button 
-              onClick={onBack}
-              className="bg-[#3b5f5c] text-white px-10 py-4 rounded-full font-bold hover:bg-[#2a4543] transition-colors shadow-xl"
-            >
-              Voltar para o Portfólio
-            </button>
+            <div className="flex justify-center gap-4">
+              <button 
+                onClick={() => window.open('mailto:contato@giu.com')}
+                className="bg-[#ba4744] text-white px-8 py-3 rounded-full font-bold hover:bg-[#a03836] transition-colors shadow-lg flex items-center gap-2"
+              >
+                <Mail size={18} /> Fale Comigo
+              </button>
+              <button 
+                onClick={onBack}
+                className="bg-transparent border-2 border-[#423b2c]/10 text-[#423b2c] px-8 py-3 rounded-full font-bold hover:bg-[#423b2c]/5 transition-colors"
+              >
+                Voltar para o Portfólio
+              </button>
+            </div>
           </div>
 
         </div>
@@ -926,7 +994,7 @@ const App = () => {
     window.scrollTo(0, 0);
   }, [currentView]);
 
-  if (currentView === 'case-athena') {
+  if (currentView === 'case-onboarding') {
     return (
       <div className="min-h-screen bg-[#f4f3e1] text-[#423b2c] font-sans selection:bg-[#ba4744] selection:text-[#f4f3e1] w-full">
         <GlobalStyles />
