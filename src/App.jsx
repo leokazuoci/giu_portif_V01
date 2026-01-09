@@ -123,7 +123,7 @@ const translations = {
       ctaContact: 'Vamos conversar?',
       statExp: 'Experiência',
       statEng: 'Inglês',
-      profileImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+      profileImage: "https://i.imgur.com/sQGxunz.jpeg"
     },
     experience: {
       title: 'Minha Jornada',
@@ -146,7 +146,7 @@ const translations = {
         { 
           title: "Nadia: Assistente Financeira", 
           category: "Fintech", 
-          image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+          image: "https://miro.medium.com/v2/resize:fit:4000/format:webp/1*NVSoWTwAUaekoEajLXIK0g.png", 
           link: "https://medium.com/@giu.bortoletto/nadia-case-de-produto-d445589a4f69", 
           challenge: "Simplificar a gestão financeira para usuários desbancarizados.", 
           solution: "Chatbot humanizado que traduz dados em dicas.", 
@@ -156,7 +156,7 @@ const translations = {
         { 
           title: "App Academia PM Fit", 
           category: "HealthTech", 
-          image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+          image: "https://miro.medium.com/v2/resize:fit:4000/format:webp/1*KkUsJWfBI2AIz-z2jygZuA.png", 
           link: "https://medium.com/@giu.bortoletto/app-academia-pm-fit-case-de-produto-9749eef5cc8b", 
           challenge: "Reduzir churn de alunos nos primeiros 30 dias.", 
           solution: "Gamificação e planos de treino adaptativos.", 
