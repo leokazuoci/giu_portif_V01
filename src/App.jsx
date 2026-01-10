@@ -40,7 +40,6 @@ const Workflow = (props) => <Icon {...props}><rect width="8" height="8" x="3" y=
 const Search = (props) => <Icon {...props}><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></Icon>;
 const Rocket = (props) => <Icon {...props}><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></Icon>;
 
-
 /* --- ESTILOS GLOBAIS BLINDADOS --- */
 const GlobalStyles = () => (
   <style>{`
@@ -206,83 +205,6 @@ const translations = {
       ]
     },
     footer: { title: 'Vamos conversar?', text: 'Aberta a oportunidades globais.', btnContact: 'Email', copyright: '© 2025 Giuliette Bortoletto' }
-  },
-  en: {
-    nav: { about: 'About', experience: 'Experience', cases: 'Cases', skills: 'Skills', articles: 'Articles', contact: 'Contact', mobileCta: 'Let\'s Talk' },
-    intro: {
-      tag: 'AI Product Manager',
-      title: 'Hi, I\'m Giuliette.',
-      subtitle: 'Building digital solutions with empathy, strategy, and real impact.',
-      aboutP1: 'I am an AI Product Manager with over 8 years in digital products, leveraging data and AI.',
-      aboutP2: 'I have an analytical, communicative, and results-oriented profile. I seek challenges in global teams connecting tech, people, and impact.',
-      ctaWork: 'View Cases',
-      ctaContact: 'Let\'s Talk',
-      statExp: 'Experience',
-      statEng: 'English',
-      profileImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-    },
-    experience: {
-      title: 'My Journey',
-      subtitle: 'A timeline of leadership and learning.',
-      readMore: 'View Details',
-      close: 'Close',
-      items: [
-        { id: 1, year: "2024 - Today", company: "Bradesco", role: "PM | Solutions Hub", period: "Sep 2024 - Present", details: ["Led B2B payment orchestrator with big tech.", "Prioritized technical/functional backlog.", "Market analysis and strategic KPIs."] },
-        { id: 2, year: "2024", company: "Bradesco", role: "PM | Billing Product", period: "Jul 2024 - Sep 2024", details: ["Led B2B DDA launch on Global Solutions.", "Structured UX-focused roadmap.", "Product Discovery and strategic decisions."] },
-        { id: 3, year: "2023 - 2024", company: "Bradesco", role: "PM | Innovation", period: "Aug 2023 - Sep 2024", details: ["Digital innovation for payroll/taxes.", "SCRUM for OKR-aligned projects.", "Project ROI projection."] },
-        { id: 4, year: "2021 - 2023", company: "banQi", role: "Product Manager", period: "2021 - 2023", details: ["Product lifecycle management in fintech."] },
-        { id: 5, year: "2018 - 2021", company: "DiDi (99)", role: "Analyst/PM", period: "2018 - 2021", details: ["Global teams, operational efficiency."] }
-      ]
-    },
-    cases: {
-      title: 'Selected Cases',
-      subtitle: <>Real problems,<br/>strategic solutions,<br/>measurable results.</>,
-      readCase: 'Read Case',
-      items: [
-        { title: "Nadia: Financial Assistant", category: "Fintech", image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "https://medium.com/@giu.bortoletto/nadia-case-de-produto-d445589a4f69", challenge: "Simplifying finance for unbanked users.", solution: "Humanized chatbot translating data.", result: "Record daily engagement.", bigNumbers: ["+45% Engagement", "-20% Support", "4.8 Rating"] },
-        { title: "App Academia PM Fit", category: "HealthTech", image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", link: "https://medium.com/@giu.bortoletto/app-academia-pm-fit-case-de-produto-9749eef5cc8b", challenge: "Reducing churn in first 30 days.", solution: "Gamification and adaptive plans.", result: "Increased retention and LTV.", bigNumbers: ["+30% Retention", "+15% LTV", "90 NPS"] },
-        { 
-          // Conteúdo do PDF traduzido
-          title: "Data-Driven Onboarding", 
-          category: "Fintech & UX", 
-          isInternal: true, 
-          internalRoute: 'case-onboarding',
-          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
-          challenge: "High volume of follow-ups and low conversion in digital account opening.", 
-          solution: "Standardization of decisions, BOT automation, and efficiency dashboards.", 
-          result: "Drastic reduction in operational costs and friction.", 
-          bigNumbers: ["-57% Active Calls", "+20% FCR", "-33% Follow-up"] 
-        }
-      ]
-    },
-    skills: {
-      hardTitle: 'Stack & Tools',
-      softTitle: 'Soft Skills',
-      hardCategories: [
-        { id: 'strategy', name: 'Strategy', icon: Target, skills: ["Product Strategy", "Discovery", "User Research", "Roadmap"] },
-        { id: 'tech', name: 'AI & Data', icon: Database, skills: ["AI Product Mgmt", "Data Analysis", "KPIs & Metrics", "Python Basics"] },
-        { id: 'execution', name: 'Execution', icon: Users, skills: ["Agile/Scrum", "Stakeholders", "Backlog", "Jira/Confluence"] }
-      ],
-      softList: [
-        { title: "Adaptability", desc: "Fluidity from startups to corps." },
-        { title: "Communication", desc: "Translating 'tech' to business." },
-        { title: "Systemic Vision", desc: "Connecting micro to macro." }
-      ]
-    },
-    articles: {
-      title: 'Articles',
-      linkText: 'Medium Profile',
-      readFull: 'Read',
-      items: [
-        { title: "What if thinking product meant thinking place?", source: "Mulheres de Produto", date: "Jul 2025", summary: "Digital products as welcoming spaces.", link: "https://medium.com/mulheres-de-produto/e-se-pensar-produto-fosse-pensar-lugar-823466ab0b93" },
-        { title: "CX Metrics Useful in Product", source: "Mulheres de Produto", date: "Jul 2024", summary: "NPS, CSAT, CES guiding backlog.", link: "https://medium.com/mulheres-de-produto/m%C3%A9tricas-de-cx-%C3%BAteis-em-produto-12860b8543d3" },
-        { title: "If the roadmap is a map...", source: "PM3 Blog", date: "Aug 2025", summary: "Collaborative roadmap building.", link: "https://pm3.com.br/blog/roadmap/" },
-        { title: "My first months as PM", source: "Medium", date: "Sep 2023", summary: "Initial challenges and learnings.", link: "https://medium.com/@giu.bortoletto/meus-primeiros-meses-em-um-time-de-produto-b448bd9040f4" },
-        { title: "Career transition to product", source: "Medium", date: "Sep 2023", summary: "Study structure and networking.", link: "https://medium.com/@giu.bortoletto/meu-processo-de-migra%C3%A7%C3%A3o-de-carreira-para-produto-8aabae0fe6a0" },
-        { title: "3 CX metrics I love", source: "Medium", date: "Oct 2023", summary: "Essential indicators for PMs.", link: "https://medium.com/@giu.bortoletto/3-m%C3%A9tricas-de-cx-que-eu-adoro-fd6c660201c4" }
-      ]
-    },
-    footer: { title: 'Let\'s Talk?', text: 'Open to global opportunities.', btnContact: 'Email', copyright: '© 2025 Giuliette Bortoletto' }
   }
 };
 
@@ -361,14 +283,14 @@ const CaseStudyPage = ({ onBack }) => {
                 <p>
                   <strong>O Problema Central:</strong> Identificamos um alto volume de contatos e recontatos durante a abertura de conta. As causas raízes eram fluxos pouco claros, decisões manuais e baixa rastreabilidade dos dados.
                 </p>
-                <p className="border-l-4 border-[#ba4744] pl-4 italic text-[#423b2c]">
+                <p className="border-l-4 border-[#423b2c] pl-4 italic text-[#423b2c]">
                   "Isso gerava baixa conversão, ineficiência operacional e risco financeiro em uma etapa crítica do produto."
                 </p>
               </div>
             </div>
             
             <div className="space-y-8">
-              {/* Card KPIs */}
+              {/* Card KPIs - Cores Sóbrias */}
               <div className="bg-white p-8 rounded-3xl shadow-sm border border-[#423b2c]/5">
                 <h3 className="font-bold text-[#423b2c] mb-4 flex items-center gap-2">
                   <TrendingUp size={20} className="text-[#3b5f5c]"/> Objetivos & KPIs
@@ -379,15 +301,15 @@ const CaseStudyPage = ({ onBack }) => {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center border-b border-gray-100 pb-2">
                     <span className="text-gray-500">Conversão</span>
-                    <span className="font-bold text-[#3b5f5c]">Aumentar no Onboarding</span>
+                    <span className="font-bold text-[#423b2c]">Aumentar no Onboarding</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-gray-100 pb-2">
                     <span className="text-gray-500">Qualidade</span>
-                    <span className="font-bold text-[#f0cb56]">Melhorar FCR (Resolução 1º contato)</span>
+                    <span className="font-bold text-[#423b2c]">Melhorar FCR (Resolução 1º contato)</span>
                   </div>
                   <div className="flex justify-between items-center border-b border-gray-100 pb-2">
                     <span className="text-gray-500">Eficiência</span>
-                    <span className="font-bold text-[#ba4744]">Reduzir Recontato</span>
+                    <span className="font-bold text-[#423b2c]">Reduzir Recontato</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-500">Volume</span>
@@ -397,8 +319,8 @@ const CaseStudyPage = ({ onBack }) => {
               </div>
 
               {/* Card Hipótese */}
-              <div className="glass-panel p-8 rounded-3xl border border-[#ba4744]/20 bg-[#ba4744]/5">
-                <h3 className="font-bold text-[#ba4744] mb-2 flex items-center gap-2">
+              <div className="glass-panel p-8 rounded-3xl border border-[#423b2c]/20 bg-[#423b2c]/5">
+                <h3 className="font-bold text-[#423b2c] mb-2 flex items-center gap-2">
                   <Lightbulb size={20}/> Hipótese Central
                 </h3>
                 <p className="text-[#423b2c]/80 italic">
@@ -411,7 +333,7 @@ const CaseStudyPage = ({ onBack }) => {
           {/* Seção 2: Descoberta e Soluções */}
           <div className="glass-panel p-10 md:p-16 rounded-[3rem] bg-white/40">
             <h2 className="text-4xl font-bold mb-12 text-[#3b5f5c] text-center flex items-center justify-center gap-3">
-              <Search size={32} /> Discovery & Soluções
+              <Icon size={32}><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></Icon> Discovery & Soluções
             </h2>
             
             <p className="text-center text-lg text-[#423b2c]/70 mb-10 max-w-3xl mx-auto">
@@ -420,9 +342,9 @@ const CaseStudyPage = ({ onBack }) => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { title: 'Padronização', icon: CheckCircle, desc: 'Decisões e critérios de análise padronizados.', color: 'text-[#f0cb56]' },
-                { title: 'Automação (BOT)', icon: Cpu, desc: 'Coleta e cobrança automática de documentos.', color: 'text-[#3b5f5c]' },
-                { title: 'Visibilidade', icon: MessageSquare, desc: 'Revisão de mensagens para dar clareza ao cliente.', color: 'text-[#ba4744]' },
+                { title: 'Padronização', icon: CheckCircle, desc: 'Decisões e critérios de análise padronizados.', color: 'text-[#423b2c]' },
+                { title: 'Automação (BOT)', icon: Cpu, desc: 'Coleta e cobrança automática de documentos.', color: 'text-[#423b2c]' },
+                { title: 'Visibilidade', icon: MessageSquare, desc: 'Revisão de mensagens para dar clareza ao cliente.', color: 'text-[#423b2c]' },
                 { title: 'Monitoramento', icon: BarChart, desc: 'Dashboards para monitorar eficiência e dados.', color: 'text-[#423b2c]' },
               ].map((item, i) => (
                 <div key={i} className="bg-white/60 p-6 rounded-2xl border border-white shadow-sm text-center">
@@ -436,7 +358,7 @@ const CaseStudyPage = ({ onBack }) => {
             </div>
           </div>
 
-          {/* Seção 3: Impacto e Resultados */}
+          {/* Seção 3: Impacto e Resultados - Cores Sóbrias */}
           <div>
             <h2 className="text-3xl font-bold mb-10 text-[#423b2c] flex items-center gap-3">
               <TrendingUp size={28} /> Impacto em 10 Semanas
@@ -444,9 +366,9 @@ const CaseStudyPage = ({ onBack }) => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
                 { label: 'FCR (Resolução)', value: '+20%', color: 'text-[#3b5f5c]' },
-                { label: 'Recontato', value: '-33%', color: 'text-[#ba4744]' },
-                { label: 'Ligações Ativas', value: '-57%', color: 'text-[#ba4744]' },
-                { label: 'Incoming Total', value: '-50%', color: 'text-[#423b2c]' },
+                { label: 'Recontato', value: '-33%', color: 'text-[#3b5f5c]' }, // Verde/Teal
+                { label: 'Ligações Ativas', value: '-57%', color: 'text-[#3b5f5c]' }, // Verde/Teal
+                { label: 'Incoming Total', value: '-50%', color: 'text-[#3b5f5c]' }, // Verde/Teal
               ].map((stat, i) => (
                 <div key={i} className="bg-white p-6 rounded-2xl shadow-sm text-center border border-[#423b2c]/5 hover:scale-105 transition-transform">
                   <p className={`text-4xl md:text-5xl font-bold mb-2 ${stat.color}`}>{stat.value}</p>
@@ -459,7 +381,7 @@ const CaseStudyPage = ({ onBack }) => {
             </p>
           </div>
 
-          {/* Visão de Futuro */}
+          {/* Visão de Futuro - Bullets Amarelos */}
           <div className="bg-[#423b2c] text-[#f4f3e1] p-10 md:p-16 rounded-[3rem] text-center relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
             <div className="relative z-10">
@@ -472,15 +394,15 @@ const CaseStudyPage = ({ onBack }) => {
                   <p className="opacity-90">Evoluir o onboarding para um modelo mais <strong>preditivo e automatizado</strong>.</p>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-2 h-2 mt-2 bg-[#3b5f5c] rounded-full shrink-0"></div>
+                  <div className="w-2 h-2 mt-2 bg-[#f0cb56] rounded-full shrink-0"></div>
                   <p className="opacity-90">Aplicar <strong>IA em decisões de baixo risco</strong>, reduzindo drasticamente a validação manual.</p>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-2 h-2 mt-2 bg-[#ba4744] rounded-full shrink-0"></div>
+                  <div className="w-2 h-2 mt-2 bg-[#f0cb56] rounded-full shrink-0"></div>
                   <p className="opacity-90">Direcionar atendimento humano apenas para <strong>exceções e casos complexos</strong>.</p>
                 </div>
                 <div className="flex gap-4">
-                   <div className="w-2 h-2 mt-2 bg-white rounded-full shrink-0"></div>
+                   <div className="w-2 h-2 mt-2 bg-[#f0cb56] rounded-full shrink-0"></div>
                    <p className="opacity-90">Escalar conversão e eficiência com <strong>dados estruturados e rastreáveis</strong>.</p>
                 </div>
               </div>
@@ -877,7 +799,7 @@ const Cases = ({ t, onViewCase }) => {
                 
                 <div className="space-y-6 mb-8">
                   <div>
-                    <p className="text-xs font-bold text-[#ba4744] uppercase mb-1">Desafio</p>
+                    <p className="text-xs font-bold text-[#423b2c] uppercase mb-1">Desafio</p>
                     <p className="text-sm text-[#423b2c]/80 line-clamp-3">{item.challenge}</p>
                   </div>
                   <div>
